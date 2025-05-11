@@ -1,0 +1,250 @@
+
+        :root {
+            --main-color: #9c27b0;
+            --secondary-color: #7b1fa2;
+            --dark-bg: #121212;
+            --text-color: #f3e5f5;
+            --glow: 0 0 15px rgba(156, 39, 176, 0.7);
+            --time-glow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+        
+        body {
+            font-family: 'Cinzel', serif;
+            background-color: var(--dark-bg);
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(156, 39, 176, 0.1) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(123, 31, 162, 0.1) 0%, transparent 20%);
+        }
+        
+        .sky-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.2;
+            background-image: 
+                url('https://i.imgur.com/stars-bg.png'),
+                linear-gradient(to bottom, #000000, #1a237e);
+            background-size: cover;
+            animation: sky-pulse 30s infinite alternate;
+        }
+        
+        @keyframes sky-pulse {
+            0% { opacity: 0.2; }
+            100% { opacity: 0.3; }
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+        
+        h1 {
+            font-size: 4rem;
+            margin: 0;
+            color: var(--main-color);
+            text-shadow: var(--glow);
+            position: relative;
+            display: inline-block;
+            letter-spacing: 3px;
+        }
+        
+        h1::before, h1::after {
+            content: '✧';
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--main-color);
+        }
+        
+        h1::before { left: -40px; }
+        h1::after { right: -40px; }
+        
+        .subtitle {
+            font-style: italic;
+            color: var(--text-color);
+            margin-top: 1rem;
+            font-size: 1.2rem;
+            letter-spacing: 1px;
+        }
+        
+        .time-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+            perspective: 1000px;
+        }
+        
+        .time-card {
+            background: rgba(30, 15, 40, 0.7);
+            border-radius: 10px;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+            cursor: pointer;
+            position: relative;
+            height: 350px;
+            border: 1px solid var(--secondary-color);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+        }
+        
+        .time-card.flipped {
+            transform: rotateY(180deg);
+        }
+        
+        .time-card-front,
+        .time-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            padding: 1.5rem;
+            box-sizing: border-box;
+            border-radius: 10px;
+        }
+        
+        .time-card-front {
+            display: flex;
+            flex-direction: column;
+            background: rgba(30, 15, 40, 0.7);
+        }
+        
+        .time-card-back {
+            background: rgba(20, 10, 30, 0.9);
+            transform: rotateY(180deg);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .time-card h3 {
+            color: var(--main-color);
+            margin-top: 0;
+            text-align: center;
+            font-size: 1.5rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .time-card h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 2px;
+            background: var(--main-color);
+        }
+        
+        .time-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1rem;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            filter: drop-shadow(var(--time-glow));
+        }
+        
+        .main-legend {
+            background: rgba(30, 15, 40, 0.7);
+            border-radius: 10px;
+            padding: 2rem;
+            margin-bottom: 3rem;
+            border: 1px solid var(--secondary-color);
+            position: relative;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+        }
+        
+        .main-legend::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('https://i.imgur.com/time-pattern.png') center/cover no-repeat;
+            opacity: 0.05;
+            z-index: -1;
+            border-radius: 10px;
+        }
+        
+        .time-symbol {
+            width: 150px;
+            height: 150px;
+            margin: 2rem auto;
+            background: url('https://i.imgur.com/time-symbol.png') center/contain no-repeat;
+            cursor: pointer;
+            position: relative;
+            filter: drop-shadow(var(--glow));
+            animation: rotate 20s linear infinite;
+        }
+        
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            background: linear-gradient(45deg, var(--main-color), var(--secondary-color));
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: all 0.3s;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 0 15px rgba(156, 39, 176, 0.5);
+            letter-spacing: 1px;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 25px rgba(156, 39, 176, 0.8);
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(156, 39, 176, 0.3);
+            font-size: 0.9rem;
+        }
+        
+        .star {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: white;
+            border-radius: 50%;
+            z-index: -1;
+            animation: shooting-star linear infinite;
+        }
+        
+        @keyframes shooting-star {
+            0% { 
+                transform: translate(0, 0);
+                opacity: 0;
+            }
+            10% { opacity: 1; }
+            100% { 
+                transform: translate(calc(var(--distance) * 1vw), calc(var(--distance) * 1vh));
+                opacity: 0;
+            }
+        }

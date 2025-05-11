@@ -1,0 +1,96 @@
+       body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: #0a0a1a;
+            color: #e0e0ff;
+            overflow: hidden;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        #map-container {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            background-image: url('img.png');
+            background-size: cover;
+            overflow: hidden;
+        }
+
+        .location {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background-color: rgba(100, 200, 255, 0.7);
+            border: 2px solid #ffffff;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            color: white;
+        }
+
+        .location:hover {
+            transform: scale(1.5);
+            background-color: rgba(255, 150, 50, 0.9);
+            z-index: 100;
+        }
+
+        .location-info {
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: rgba(0, 0, 40, 0.9);
+            padding: 10px;
+            border-radius: 5px;
+            width: 200px;
+            display: none;
+            border: 1px solid #446;
+            box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+        }
+
+        .location:hover .location-info {
+            display: block;
+        }
+
+        .title {
+            position: relative;
+            top: 20px;
+            left: 20px;
+            font-size: 2em;
+            color: #aaffff;
+            text-shadow: 0 0 10px #00ffff, 0 0 20px #0088ff;
+            z-index: 1000;
+            text-align: center;
+        }
+
+        #controls {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background-color: rgba(0, 0, 40, 0.7);
+            padding: 10px;
+            border-radius: 5px;
+            z-index: 1000;
+        }
+
+        button {
+            background-color: #335588;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            margin: 5px;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #4477aa;
+        }
